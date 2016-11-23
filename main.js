@@ -78,12 +78,14 @@ define(function (require, exports, module) {
   }
 
   var GROUP_LINE = /^\s*s?cen.r.?.?:/i,
-      FEATURE_LINE = /^\s*(feature|funcionalidade|requisito)\s.*/i,
-      CONJ_LINE = /^\s*(and|but|e|mas)\s.*/i,
+      FEATURE_LINE = /^\s*(feature|funcionalidade|requisito|funkcja|właściwość|aspekt|potrzeba biznesowa):\s?.*?/i,
+      CONJ_LINE = /^\s*(and|but|e|mas|i|oraz|ale)\s.*/i,
     BLANK_LINE = /^\s*$/,
     COMMENT_LINE = /^\s*#/,
     TAG_LINE = /^\s*@/,
     DASHED_LINE = /^(\s|\-)*$/,
+    BACKGROUND_LINE = /^\s*(założenia|background):\s?.*?/i,
+    SCENARIO_LINE = /^\s*(scenariusz|szablon scenariusza):\s?.*?/i,
     STARTING_SPACES = /^\s*/,
     TRAILING_SPACES = /\s*$/;
   var error_mark;
@@ -132,9 +134,9 @@ define(function (require, exports, module) {
         if (line.indexOf('\u2506') >= 0) return exampleLine('\u2506');
         if (GROUP_LINE.test(line)) return groupLine();
         if (CONJ_LINE.test(line))
-        lines[lineIdx] = '    ' + lines[lineIdx].trim();
-        else if (FEATURE_LINE.test(line))
-          lines[lineIdx] = '  ' + lines[lineIdx].trim();
+            lines[lineIdx] = '    ' + lines[lineIdx].trim();
+        else if (FEATURE_LINE.test(line) || BACKGROUND_LINE.test(line) || SCENARIO_LINE.test(line))
+          lines[lineIdx] = lines[lineIdx].trim();
         else
           lines[lineIdx] = '  ' + lines[lineIdx].trim();
         flush_table(lineIdx);

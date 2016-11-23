@@ -1,6 +1,6 @@
 {
-  "name": "brackets-cucumber",
-  "version": "0.12.1",
+  "name": "brackets-cucumber-pl",
+  "version": "0.12.2",
   "description": "Gherkin/Cucumber/Feature files editor for Brackets, with beautify, row inserting in tables...",
   "main": "main.js",
   "scripts": {
@@ -19,9 +19,15 @@
     "Editor"
   ],
   "author": "thr0w",
+  "contributors": ["Karol Łuckiewicz"],
   "license": "GPLv3",
   "bugs": {
     "url": "https://github.com/thr0w/brackets-cucumber/issues"
   },
-  "homepage": "https://github.com/thr0w/brackets-cucumber"
+  "homepage": "https://github.com/thr0w/brackets-cucumber",
+  "devDependencies": {
+    "fs-extra": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-zip": "^3.2.0"
+  }
 }
